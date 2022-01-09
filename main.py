@@ -4,28 +4,31 @@ import usb_driver
 
 def toUSB(line):
     if line['action'] == "write":
-        USBconn.write(line['message'])
+        USBconn.write(line['message'], line['cs'])
     elif line['action'] == "read":
-        USBconn.read(line['message'])
+        if 'read_message' in line:
+            USBconn.read(line['message'], line['cs'], read_message=line['read_message'])
+        else:
+            USBconn.read(line['message'], line['cs'])
 
-
-file_json = open("exsetting.json")
+file_json = open("exsettings.json")
 data = json.load(file_json)
 setup = data['setup']
 if 'log_file' in setup.keys():
-    USBconn = usb_driver.USB_conn("COM3", 9600, setup['timeout'])
+    USBconn = usb_driver.USB_conn(setup['com'], setup['baudrate'], setup['timeout'], log_name=setup['log_file'])
 else:
-    USBconn = usb_driver.USB_conn("COM3", 9600, setup['timeout'], log_name=setup['log_file'])
+    USBconn = usb_driver.USB_conn(setup['com'], setup['baudrate'], setup['timeout'])
+
 if setup['type'] == "relative":
     for line in data['timeline']:
+        time.sleep(line['delay_ms'] / 1000.0)
         toUSB(line)
-        time.sleep(line['delay_ms'] / 1000)
 if setup['type'] == "absolute":
-    start_time_ms = time.time_ns() / 1000
+    start_time_ns = time.time_ns()
     for line in data['timeline']:
-        toUSB(line)
-        time_ms = time.time_ns() / 1000
         while True:
-            if (time_ms - start_time_ms) > line['delay_ms']:
+            time_ns = time.time_ns()
+            if ((time_ns - start_time_ns) / 1000000.0) > line['delay_ms']:
                 break
             time.sleep(5/10000)
+        toUSB(line)
