@@ -32,3 +32,4 @@ if setup['type'] == "absolute":
                 break
             time.sleep(5/10000)
         toUSB(line)
+USBconn.close()
