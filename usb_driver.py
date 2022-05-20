@@ -52,7 +52,7 @@ class USB_conn:
             self.file.write("  write  ")
             self.file.write(hex(mask))
         for i in range(message_len):
-            	self.ser.write(bytes([message_list[i]]))
+            self.ser.write(bytes([message_list[i]]))
             if self.logging:
                 self.file.write("\\")
                 self.file.write(hex(message_list[i]))
@@ -88,7 +88,7 @@ class USB_conn:
         mask = self.write_mask
         if cs == 2:
             mask = mask | self.cs_mask
-        message_list = self.int_to_bytes(read_message) #max number of btes in message is 2^6
+        message_list = self.int_to_bytes(write_message) #max number of btes in message is 2^6
         message_len = len(message_list)
         mask = mask & (message_len<<2)
         self.ser.write(bytes([mask]))
@@ -98,7 +98,7 @@ class USB_conn:
             self.file.write("  write  ")
             self.file.write(hex(mask))
         for i in range(message_len):
-            	self.ser.write(bytes([message_list[i]]))
+            self.ser.write(bytes([message_list[i]]))
             if self.logging:
                 self.file.write("\\")
                 self.file.write(hex(message_list[i]))

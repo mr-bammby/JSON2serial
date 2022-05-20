@@ -4,16 +4,137 @@
     "log_file": ".\\log\\log",
     "timeout": 10,
     "baudrate": 300,
-    "com": "COM8"
+    "com": "COM8",
+    "repeat":"loop"
   },
   "timeline": [
     {
       "action": "write",
-      "message": 1,
+      "message": 32768,
       "delay_ms": 0,
       "cs": 1
     },
 	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 33024,
+      "delay_ms": 200,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 33280,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 33536,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 33792,
+      "delay_ms": 200,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 34048,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 34304,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 34560,
+      "delay_ms": 200,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 34816,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 35072,
+      "delay_ms": 0,
+      "cs": 1
+    },
+	    {
+      "action": "read",
+      "message": "None",
+      "delay_ms": 200,
+      "cs": 1
+    },
+    {
+      "action": "write",
+      "message": 35328,
+      "delay_ms": 200,
+      "cs": 1
+    },
+	  {
       "action": "read",
       "message": "None",
       "delay_ms": 200,
