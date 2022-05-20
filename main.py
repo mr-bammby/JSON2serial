@@ -1,6 +1,8 @@
 import json
 import time
 import usb_driver
+import os
+from pathlib import Path
 
 def toUSB(line):
     if line['action'] == "write":
@@ -11,6 +13,8 @@ def toUSB(line):
         else:
             USBconn.read(line['message'], line['cs'])
 
+script_path = Path( __file__ ).parent.absolute()
+os.chdir(script_path)
 file_json = open("exsettings.json")
 data = json.load(file_json)
 setup = data['setup']
